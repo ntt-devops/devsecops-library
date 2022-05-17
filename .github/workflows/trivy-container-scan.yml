@@ -6,11 +6,11 @@ on:
       imagename:
         required: true
         type: string
-    secrets:
-      awskeyid:
-        required: true
-      awskeysecret:
-        required: true
+    #secrets:
+    #  awskeyid:
+    #    required: true
+    #  awskeysecret:
+    #    required: true
         
 
 jobs:
