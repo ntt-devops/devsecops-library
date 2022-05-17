@@ -22,8 +22,8 @@ jobs:
       - uses: ./.github/workflows/my-action
         with:
           username: ${{ inputs.imagename }}
-          token: ${{ secrets.awskeyid }}
-          token: ${{ secrets.awskeysecret }}          
+          awskeyid: ${{ secrets.awskeyid }}
+          awskeysecret: ${{ secrets.awskeysecret }}          
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
