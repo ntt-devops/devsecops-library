@@ -3,28 +3,25 @@ name: Reusable Sonarcloud Analysis job workflow
 on:
   workflow_call:
     inputs:
-      imagename:
+      projectdir:
         required: true
         type: string
     secrets:
-      awskeyid:
-        required: true
-      awskeysecret:
-        required: true
-        
+      sonartoken:
+        required: true      
 
 jobs:
-  trivy_scan_job:
-    name: Trivy container scan job
+  sonarcloud_analysis_job:
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
-    container: docker.io/aquasec/trivy:latest    
-    steps:       
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+    steps:
+      - uses: actions/checkout@v2
         with:
-          aws-access-key-id: ${{ secrets.awskeyid }}
-          aws-secret-access-key: ${{ secrets.awskeysecret }}
-          aws-region: "eu-west-2"
-          mask-aws-account-id: "no"
-      - run: |
-          trivy image "${{ inputs.imagename }}"    
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: backend
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.sonartoken }}
