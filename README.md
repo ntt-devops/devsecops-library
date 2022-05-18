@@ -1,12 +1,15 @@
 # Welcome to DevSecOps Library
 
 Overview
+
 This library shares workflows, secrets and runners which can be reused in all the projects.  
 
 Features
+
 1.) Sonarcloud and Trivy container scan workflows are available to reuse. This will avoid duplication and make your workflow easier to maintain
 
 User guide
+
 To call the Trivy container scan workflow in your project, just add new job in your workflow:
 
 jobs:
