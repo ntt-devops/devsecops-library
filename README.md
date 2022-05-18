@@ -12,8 +12,6 @@ User guide
 
 To call the Trivy container scan workflow in your project, just add new job in your workflow:
 
-jobs:
-
   trivy-scan:
   
     uses: ntt-devops/devsecops-library/.github/workflows/trivy-container-scan.yml@main
