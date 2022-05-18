@@ -6,7 +6,7 @@ This library shares workflows, secrets and runners which can be reused in all th
 
 Features
 
-1.) Sonarcloud and Trivy container scan workflows are available to reuse. This will avoid duplication and make your workflow easier to maintain
+1.) Sonarcloud Analysis and Trivy Container Scan workflows are available to reuse. This will avoid duplication and make your workflow easier to maintain
 
 User guide
 
