@@ -1,6 +1,4 @@
-# devsecops-library
-
-Welcome to Gravitee.io UI Components
+# Welcome to DevSecOps Library
 
 Overview
 This library shares workflows, secrets and runners which can be reused in all the projects.  
