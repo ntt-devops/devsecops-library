@@ -6,9 +6,6 @@ on:
       imagename:
         required: true
         type: string
-      jobname:
-        required: true
-        type: string
     secrets:
       awskeyid:
         required: true
