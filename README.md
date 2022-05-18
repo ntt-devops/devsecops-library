@@ -31,7 +31,7 @@ To call the Trivy container scan workflow in your project, just add new job in y
       
 To call the Sonarcloud Analysis workflow in your project, just add new job in your workflow:   
    
-   sonarcloud-be:
+   sonarcloud-analysis:
    
     uses: ntt-devops/devsecops-library/.github/workflows/sonarcloud-analysis.yml@main
     
