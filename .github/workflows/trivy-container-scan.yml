@@ -6,6 +6,9 @@ on:
       imagename:
         required: true
         type: string
+      jobname:
+        required: true
+        type: string
     secrets:
       awskeyid:
         required: true
@@ -17,6 +20,7 @@ jobs:
   trivy_scan_job:
     name: Trivy container scan job
     runs-on: ubuntu-latest
+    needs: [${{ inputs.jobname }}]
     container: docker.io/aquasec/trivy:latest    
     steps:       
       - name: Configure AWS credentials
