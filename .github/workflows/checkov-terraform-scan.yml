@@ -1,0 +1,27 @@
+name: Reusable Checkov Terraform Scan job workflow
+
+on:
+  workflow_call:
+    inputs:
+      projectdir:
+        required: true
+        type: string
+    secrets:
+      sonartoken:
+        required: true      
+
+jobs:
+  checkov_terraform_scan_job:
+    name: Checkov Terraform Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          projectBaseDir: ${{ inputs.projectdir }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.sonartoken }}
