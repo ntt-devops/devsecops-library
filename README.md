@@ -6,7 +6,7 @@ This library shares workflows, secrets and runners which can be reused in all th
 
 Features
 
-1.) Sonarcloud Analysis and Trivy Container Scan workflows are available to reuse. This will avoid duplication and make your workflow easier to maintain
+1.) Sonarcloud Analysis, Checkov Terraform Scan and Trivy Container Scan workflows are available to reuse. This will avoid duplication and make your workflow easier to maintain
 
 User guide
 
@@ -43,5 +43,8 @@ To call the Sonarcloud Analysis workflow in your project, just add new job in yo
     
       sonartoken: ${{ secrets.sonartoken }}    
       
+
+To call the Checkov Terraform Scan workflow in your project, just add new job in your workflow:   
+
 
 Reference : https://docs.github.com/en/actions/using-workflows/sharing-workflows-secrets-and-runners-with-your-organization
