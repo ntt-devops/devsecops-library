@@ -6,6 +6,9 @@ on:
       projectdir:
         required: true
         type: string 
+      softfail:
+        required : true
+        type: boolean
 
 jobs:
   checkov_terraform_scan_job:
@@ -23,4 +26,5 @@ jobs:
         with:
           directory: ${{ inputs.projectdir }}
           framework: terraform 
-          soft_fail: true
+          soft_fail: ${{ inputs.softfail }}
+
