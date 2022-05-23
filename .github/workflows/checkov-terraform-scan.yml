@@ -21,5 +21,5 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: terraform
+          directory: ${{ inputs.projectdir }}
           framework: terraform 
