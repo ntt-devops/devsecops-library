@@ -28,4 +28,5 @@ jobs:
           framework: terraform 
           soft_fail: ${{ inputs.softfail }}
           output_format: junitxml
+          output-file-path: checkovreport.xml
 
