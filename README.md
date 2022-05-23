@@ -46,5 +46,15 @@ To call the Sonarcloud Analysis workflow in your project, just add new job in yo
 
 To call the Checkov Terraform Scan workflow in your project, just add new job in your workflow:   
 
+  checkov-terraform-scan-workflow:
+  
+    uses: ntt-devops/devsecops-library/.github/workflows/checkov-terraform-scan.yml@main
+    
+    with:
+    
+      projectdir: terraform
+      
+      softfail: true
+      
 
 Reference : https://docs.github.com/en/actions/using-workflows/sharing-workflows-secrets-and-runners-with-your-organization
