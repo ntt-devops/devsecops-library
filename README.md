@@ -41,7 +41,7 @@ To call the Sonarcloud Analysis workflow in your project, just add new job in yo
       
     secrets:
     
-      sonartoken: ${{ secrets.sonartoken }}    
+      sonartoken: <<Sonar Token>>   
       
 
 To call the Checkov Terraform Scan workflow in your project, just add new job in your workflow:   
@@ -52,9 +52,9 @@ To call the Checkov Terraform Scan workflow in your project, just add new job in
     
     with:
     
-      projectdir: terraform
+      projectdir: << Directory Name >>
       
-      softfail: true
+      softfail: << true or false >>
       
 
 Reference : https://docs.github.com/en/actions/using-workflows/sharing-workflows-secrets-and-runners-with-your-organization
