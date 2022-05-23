@@ -27,5 +27,5 @@ jobs:
           directory: ${{ inputs.projectdir }}
           framework: terraform 
           soft_fail: ${{ inputs.softfail }}
-          output_format: json
+          output_format: junitxml
 
