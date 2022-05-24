@@ -27,6 +27,10 @@ jobs:
           directory: ${{ inputs.projectdir }}
           framework: terraform 
           soft_fail: ${{ inputs.softfail }}
-          output_format: junitxml
-          output-file-path: checkovreport.xml
+          output_format: junitxml          
+  job2:
+    runs-on: ubuntu-latest
+    needs: checkov_terraform_scan_job
+    steps:
+    - run: echo ${{needs.checkov_terraform_scan_job.outputs.results}
 
