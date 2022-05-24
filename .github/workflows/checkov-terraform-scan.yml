@@ -31,9 +31,9 @@ jobs:
       - name: checkov result
         run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
       - name: grep  
-        run: grep -v "<property" result1.xml > tmpfile.xml && mv tmpfile.xml result.xml
+        run: sed '1,7d' result1.xml
       - name: print  
-        run: printf $result.xml
+        run: printf $result1.xml
       - name: docker job 1
         run: docker pull bridgecrew/checkov
       - name: docker job 2  
