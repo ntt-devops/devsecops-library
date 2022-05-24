@@ -29,5 +29,5 @@ jobs:
           soft_fail: ${{ inputs.softfail }}
           output_format: json
       - name: checkov result
-        run: cat ${{ steps.checkov.outputs.results }}    
+        run: echo "${{ steps.checkov.outputs.results }}" >> result.xml    
   
