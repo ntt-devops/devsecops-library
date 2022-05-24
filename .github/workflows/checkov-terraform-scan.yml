@@ -35,8 +35,9 @@ jobs:
         if: always()
         with:
          report_paths: "result.xml"
-      - name: docker job
-        run: |
-         docker pull bridgecrew/checkov      
-         docker run --volume $(pwd):/tf bridgecrew/checkov --directory infra --output junitxml --soft-fail > $(pwd)/CheckovReport.xml
+      - name: docker job 1
+        run: docker pull bridgecrew/checkov
+      - name: docker job 2  
+        run: docker run --volume $(pwd):/tf bridgecrew/checkov --directory infra --output junitxml --soft-fail > $(pwd)/CheckovReport.xml
+      - name: docker job 3  
          printf $(pwd)/CheckovReport.xml
