@@ -27,6 +27,7 @@ jobs:
           directory: ${{ inputs.projectdir }}
           framework: terraform 
           soft_fail: ${{ inputs.softfail }}
-          output_format: junitxml  > checkovresult.xml        
-
-
+          output_format: junitxml
+      - name: checkov result
+        run: echo "Checkov result - ${{ steps.checkov.outputs.results }}"      
+  
