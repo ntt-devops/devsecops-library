@@ -31,7 +31,7 @@ jobs:
       - name: checkov result
         run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
       - name: grep  
-        run: grep -v "pythonLocation:" result1.xml > tmpfile.xml && mv tmpfile.xml result.xml
+        run: grep -v "<property" result1.xml > tmpfile.xml && mv tmpfile.xml result.xml
       - name: print  
         run: printf $result.xml
       - name: docker job 1
