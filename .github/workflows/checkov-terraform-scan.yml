@@ -29,5 +29,10 @@ jobs:
           soft_fail: ${{ inputs.softfail }}
           output_format: junitxml
       - name: checkov result
-        run: echo -e "${{ steps.checkov.outputs.results }}" >> result.xml    
+        run: echo -e "${{ steps.checkov.outputs.results }}" >> result.xml   
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+         junit_files: "result.xml"
   
