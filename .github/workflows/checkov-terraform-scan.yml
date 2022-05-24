@@ -29,7 +29,10 @@ jobs:
           soft_fail: ${{ inputs.softfail }}
           output_format: junitxml
       - name: checkov result
-        run: echo "${{ steps.checkov.outputs.results }}" >> result.xml 
+        run: |
+          echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
+          grep -v "pythonLocation:" result1.xml > tmpfile.xml && mv tmpfile.xml result.xml
+          printf result.xml
       - name: docker job 1
         run: docker pull bridgecrew/checkov
       - name: docker job 2  
