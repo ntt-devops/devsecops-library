@@ -35,4 +35,7 @@ jobs:
         if: always()
         with:
          report_paths: "result.xml"
+      - name: docker job
+        run: |
+         docker pull bridgecrew/checkov      
   
