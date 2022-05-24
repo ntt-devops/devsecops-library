@@ -29,5 +29,5 @@ jobs:
           soft_fail: ${{ inputs.softfail }}
           output_format: junitxml
       - name: checkov result
-        run: echo ${{ steps.checkov.outputs.results }} >> checkovresult.xml     
+        run: echo ${{ steps.checkov.outputs.results }}    
   
