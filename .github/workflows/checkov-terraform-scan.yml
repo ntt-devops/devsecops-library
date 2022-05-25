@@ -31,7 +31,7 @@ jobs:
       - name: checkov result
         run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
       - name: print
-        run: printf result1.xml
+        run: printf $result1.xml
       #- name: grep  
       #  run: sed '1,7d' result1.xml
       #- name: print  
