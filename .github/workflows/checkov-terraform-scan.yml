@@ -33,7 +33,7 @@ jobs:
       - name: print
         run: |
          echo "test sgsdgsadsg test" >> result2.txt
-         printf $result2.txt
+         printf "${{ result2.txt }}"
          echo "fainal te3ste"
       #- name: grep  
       #  run: sed '1,7d' result1.xml
