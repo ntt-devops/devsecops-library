@@ -50,4 +50,4 @@ jobs:
         uses: mikepenz/action-junit-report@v3
         if: always()
         with:
-         report_paths: infra/test.xml
+         report_paths: result1.xml
