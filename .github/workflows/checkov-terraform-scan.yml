@@ -33,7 +33,7 @@ jobs:
       - name: print
         run: |
           sed '1d' result1.xml
-          sed '3 i <?xml version="1.0" ?>' result1.xml
+          sed '1 i <?xml version="1.0" ?>' result1.xml
           #cat result1.xml
 
       #- name: grep  
