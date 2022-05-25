@@ -32,8 +32,8 @@ jobs:
         run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
       - name: print
         run: |
-         echo "test sgsdgsadsg test" >> result2.xml
-         printf $result2.xml
+         echo "test sgsdgsadsg test" >> result2.txt
+         printf $result2.txt
       #- name: grep  
       #  run: sed '1,7d' result1.xml
       #- name: print  
