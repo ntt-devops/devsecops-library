@@ -16,25 +16,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # name: Set up Python 3.8
-      # uses: actions/setup-python@v1
-      # with:
-      #   python-version: 3.8
-      #- name: Test with Checkov
-      #  id: checkov
-      #  uses: bridgecrewio/checkov-action@master
-      #  with:
-      #    directory: ${{ inputs.projectdir }}
-      #    framework: terraform 
-      #    soft_fail: ${{ inputs.softfail }}
-      #    output_format: junitxml
-      #- name: checkov result
-      #  run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Test with Checkov
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: ${{ inputs.projectdir }}
+          framework: terraform 
+          soft_fail: ${{ inputs.softfail }}
+          output_format: junitxml
+      - name: checkov result
+        run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
       - name: print
-        run: |
-         echo "test sgsdgsadsg test" >> result2.txt
-         cat result2.txt
-         echo "fainal te3ste"
+        run: cat result1.xml
+
       #- name: grep  
       #  run: sed '1,7d' result1.xml
       #- name: print  
