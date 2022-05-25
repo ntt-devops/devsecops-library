@@ -33,6 +33,7 @@ jobs:
       - name: print
         run: |
           sed '1d' result1.xml
+          sed '3 i <?xml version="1.0" ?>' result1.xml
           #cat result1.xml
 
       #- name: grep  
@@ -49,4 +50,4 @@ jobs:
         uses: mikepenz/action-junit-report@v3
         if: always()
         with:
-         report_paths: infra/test.xml
+         report_paths: result1.xml
