@@ -28,8 +28,8 @@ jobs:
           framework: terraform 
           soft_fail: ${{ inputs.softfail }}
           output_format: junitxml
-      - name: checkov result
-        run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
+      #- name: checkov result
+      #  run: echo "${{ steps.checkov.outputs.results }}" >> result1.xml 
       - name: print
         run: |
          echo "test sgsdgsadsg test" >> result2.txt
