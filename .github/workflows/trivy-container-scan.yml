@@ -27,5 +27,5 @@ jobs:
           aws-region: "eu-west-2"
           mask-aws-account-id: "no"
       - run: |
-          #trivy image -f json -o results.json "${{ inputs.imagename }}"  
-          trivy image "${{ inputs.imagename }}"
+          trivy image -f json -o results.json "${{ inputs.imagename }}"  
+          cat results.json
