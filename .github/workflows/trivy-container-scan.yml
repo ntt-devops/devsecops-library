@@ -27,6 +27,6 @@ jobs:
           mask-aws-account-id: "no"
       #- run: trivy image -f json -o report.json "${{ inputs.imagename }}"  
       - run: |
-          sudo apt-get install python-requests
+          pip install requests
           python import.py
       
