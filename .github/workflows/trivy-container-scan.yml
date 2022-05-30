@@ -19,6 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+      - run: python import.py
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
@@ -26,3 +27,7 @@ jobs:
             print("Directory contents:")
             for f in os.listdir():
                 print(f)
+
+
+
+ 
