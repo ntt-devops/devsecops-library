@@ -42,5 +42,5 @@ jobs:
           script: |
             import os
             print("Directory contents:")
-            for f in os.listdir():
-                print(f)
+            #for f in os.listdir():
+            #    print(f)
