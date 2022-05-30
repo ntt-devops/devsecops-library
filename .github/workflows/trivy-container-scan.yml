@@ -28,10 +28,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.awskeysecret }}
           aws-region: "eu-west-2"
           mask-aws-account-id: "no"
-      - run: |
+      - name: Trivy Scan
+        run: |
           trivy image -f json -o results.json "${{ inputs.imagename }}"  
           cat results.json
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - name: execute py script 
+        run: |
+          python import.py
