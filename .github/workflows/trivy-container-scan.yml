@@ -30,7 +30,7 @@ jobs:
           mask-aws-account-id: "no"
       - name: Trivy Scan
         run: |
-          trivy image -f json -o results.json "${{ inputs.imagename }}"  
+          trivy image -f json -o report.json "${{ inputs.imagename }}"  
           cat results.json
       - name: Setup Python
         uses: actions/setup-python@v2
