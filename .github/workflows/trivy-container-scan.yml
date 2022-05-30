@@ -1,5 +1,4 @@
 name: Reusable Trivy scan job workflow
-
 on:
   workflow_call:
     inputs:
@@ -10,24 +9,22 @@ on:
       awskeyid:
         required: true
       awskeysecret:
-        required: true
-        
-
+        required: true       
 jobs:
-  build:
+ trivy_scan_job:
+    name: Trivy container scan job
     runs-on: ubuntu-latest
-    steps:
+    container: docker.io/aquasec/trivy:latest    
+    steps:  
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - run: python import.py
-      - uses: jannekem/run-python-script-action@v1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          script: |
-            import os
-            print("Directory contents:")
-            for f in os.listdir():
-                print(f)
-
-
-
- 
+          aws-access-key-id: ${{ secrets.awskeyid }}
+          aws-secret-access-key: ${{ secrets.awskeysecret }}
+          aws-region: "eu-west-2"
+          mask-aws-account-id: "no"
+      - run: trivy image -f json -o report.json "${{ inputs.imagename }}"  
+      - run: python import.py
+      
