@@ -26,5 +26,7 @@ jobs:
           aws-region: "eu-west-2"
           mask-aws-account-id: "no"
       #- run: trivy image -f json -o report.json "${{ inputs.imagename }}"  
-      - run: python import.py
+      - run: |
+          sudo apt-get install python-requests
+          python import.py
       
