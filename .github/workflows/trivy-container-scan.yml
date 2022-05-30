@@ -28,5 +28,5 @@ jobs:
       - run: |
           #trivy image -f json -o report.json "${{ inputs.imagename }}"
           pip install requests
-          python import.py "Trivy Scan"
+          python import.py "Trivy Scan" "False" 
       
