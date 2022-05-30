@@ -33,8 +33,6 @@ jobs:
           trivy image -f json -o report.json "${{ inputs.imagename }}"  
       - name: Setup Python
         uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
       - name: execute py script 
         run: |
-          CPython import.py
+          python import.py
