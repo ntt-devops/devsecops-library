@@ -31,7 +31,6 @@ jobs:
       - name: Trivy Scan
         run: |
           trivy image -f json -o report.json "${{ inputs.imagename }}"  
-          cat results.json
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
