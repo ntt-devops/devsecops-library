@@ -14,17 +14,17 @@ jobs:
  trivy_scan_job:
     name: Trivy container scan job
     runs-on: ubuntu-latest
-    container: docker.io/aquasec/trivy:latest    
+    #container: docker.io/aquasec/trivy:latest    
     steps:  
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      #- name: Configure AWS credentials
-      #  uses: aws-actions/configure-aws-credentials@v1
-      #  with:
-      #    aws-access-key-id: ${{ secrets.awskeyid }}
-      #    aws-secret-access-key: ${{ secrets.awskeysecret }}
-      #    aws-region: "eu-west-2"
-      #    mask-aws-account-id: "no"
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.awskeyid }}
+          aws-secret-access-key: ${{ secrets.awskeysecret }}
+          aws-region: "eu-west-2"
+          mask-aws-account-id: "no"
       #- run: trivy image -f json -o report.json "${{ inputs.imagename }}"  
       - run: python import.py
       
