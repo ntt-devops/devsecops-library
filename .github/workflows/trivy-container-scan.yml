@@ -36,11 +36,11 @@ jobs:
       #- name: execute py script 
       #  run: |
       #    python import.py
-      - name: run pythong inline script
+      - name: run python inline script
         uses: jannekem/run-python-script-action@v1
         with:
           script: |
             import os
             print("Directory contents:")
-            #for f in os.listdir():
-            #    print(f)
+            for f in os.listdir():
+                print(f)
