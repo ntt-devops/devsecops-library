@@ -20,10 +20,10 @@ jobs:
  trivy_scan_job:
     name: Trivy container scan job
     runs-on: ubuntu-latest
-    #container: docker.io/aquasec/trivy:latest    
+    container: docker.io/aquasec/trivy:latest    
     steps:  
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      #- uses: actions/setup-python@v2
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -32,7 +32,10 @@ jobs:
           aws-region: "eu-west-2"
           mask-aws-account-id: "no"
       - run: |
-          #trivy image -f json -o report.json "${{ inputs.imagename }}"
-          pip install requests
-          python import.py "Trivy Scan" "${{ inputs.scanstatus }}" "report.json" "${{ inputs.projectname }}"
-      
+          trivy image -f json -o report.json "${{ inputs.imagename }}"
+          #pip install requests
+          #python import.py "Trivy Scan" "${{ inputs.scanstatus }}" "report.json" "${{ inputs.projectname }}"
+      - uses: actions/upload-artifact@v3
+        with:
+         name: my-artifact
+         path: report.json
