@@ -23,7 +23,6 @@ jobs:
     container: docker.io/aquasec/trivy:latest    
     steps:  
       - uses: actions/checkout@v2
-      #- uses: actions/setup-python@v2
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -31,15 +30,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.awskeysecret }}
           aws-region: "eu-west-2"
           mask-aws-account-id: "no"
-      - run: |
-          trivy image -f json -o report.json "${{ inputs.imagename }}"
-          #pip install requests
-          #python import.py "Trivy Scan" "${{ inputs.scanstatus }}" "report.json" "${{ inputs.projectname }}"
+      - run: trivy image -f json -o report.json "${{ inputs.imagename }}"
       - uses: actions/upload-artifact@v3
         with:
          name: my-artifact
          path: report.json
- trivy_scan_job1:
+ 
+ Defectdojo_job:
     name: Trivy container scan job1
     needs: trivy_scan_job
     runs-on: ubuntu-latest 
@@ -47,7 +44,6 @@ jobs:
       - uses: actions/checkout@v2   
       - uses: actions/setup-python@v2
       - uses: actions/download-artifact@v3
-      - name: defectdojo job
-        run: |  
+      - run: |  
           pip install requests
-          python import.py "Trivy Scan" "True" "./my-artifact/report.json" "${{ inputs.projectname }}"
+          python import.py "Trivy Scan" "${{ inputs.scanstatus }}" "./my-artifact/report.json" "${{ inputs.projectname }}"
