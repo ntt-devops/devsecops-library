@@ -5,6 +5,12 @@ on:
       imagename:
         required: true
         type: string
+      projectname:
+        required: true
+        type: string
+      scanstatus:
+        required: true
+        type: string        
     secrets:
       awskeyid:
         required: true
@@ -28,5 +34,5 @@ jobs:
       - run: |
           #trivy image -f json -o report.json "${{ inputs.imagename }}"
           pip install requests
-          python import.py "Trivy Scan" "True" "report.json" "Konomo Github"
+          python import.py "Trivy Scan" "${{ inputs.scanstatus }}" "report.json" "${{ inputs.projectname }}"
       
