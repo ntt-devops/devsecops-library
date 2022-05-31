@@ -42,15 +42,12 @@ jobs:
  trivy_scan_job1:
     name: Trivy container scan job1
     needs: trivy_scan_job
-    runs-on: ubuntu-latest
-    #container: docker.io/aquasec/trivy:latest    
+    runs-on: ubuntu-latest 
     steps:  
-      - uses: actions/checkout@v2         
+      - uses: actions/checkout@v2   
+      - uses: actions/setup-python@v2
       - uses: actions/download-artifact@v3
-        #with:
-          #name: my-artifact
-          #path: path/to/artifact
-    
-      - name: Display structure of downloaded files
-        run: ls -R
-        #working-directory: path/to/artifact
+      - name: defectdojo job
+        run: |  
+          pip install requests
+          python import.py "Trivy Scan" "True" "./my-artifact/report.json" "${{ inputs.projectname }}"
