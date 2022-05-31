@@ -15,7 +15,10 @@ on:
       awskeyid:
         required: true
       awskeysecret:
-        required: true       
+        required: true
+      authtoken:
+        required: true
+        
 jobs:
  trivy_scan_job:
     name: Trivy container scan job
@@ -46,4 +49,4 @@ jobs:
       - uses: actions/download-artifact@v3
       - run: |  
           pip install requests
-          python import.py "Trivy Scan" "${{ inputs.scanstatus }}" "./my-artifact/report.json" "${{ inputs.projectname }}"
+          python import.py "Trivy Scan" "${{ inputs.scanstatus }}" "./my-artifact/report.json" "${{ inputs.projectname }}" "${{ secrets.authtoken }}"
