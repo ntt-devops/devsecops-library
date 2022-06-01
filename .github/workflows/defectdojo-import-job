@@ -1,1 +1,31 @@
+name: Defectdojo import workflow
+on:
+  workflow_call:
+    inputs:
+      projectname:
+        required: true
+        type: string
+      scanstatus:
+        required: true
+        type: string  
+      scantype:
+        required: true
+        type: string  
+      productname:
+        required: true
+        type: string          
+    secrets:
+      authtoken:
+        required: true
 
+jobs:
+ Defectdojo_import_job:
+    name: Import Job
+    runs-on: ubuntu-latest 
+    steps:  
+      - uses: actions/checkout@v2   
+      - uses: actions/setup-python@v2
+      - uses: actions/download-artifact@v3
+      - run: |  
+          pip install requests
+          python import.py "${{ inputs.scantype }}" "${{ inputs.scanstatus }}" "./my-artifact/report.json" "${{ inputs.projectname }}" "${{ secrets.authtoken }}" "${{ inputs.productname }}"
