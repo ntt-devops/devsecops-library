@@ -16,7 +16,7 @@ To call the Trivy container scan workflow in your project, just add new job in y
   
     uses: ntt-devops/devsecops-library/.github/workflows/trivy-container-scan.yml@main
     
-    needs: [job name]
+    needs: [job name of image build]
     
     with:
     
@@ -63,7 +63,7 @@ To call the Defectdojo import job workflow in your project, just add new job in 
   
     uses: ntt-devops/devsecops-library/.github/workflows/defectdojo-import-job.yml@main
     
-    needs: trivy-scan-workflow
+    needs: [Job name of scan file which is uploaded to artifact]
     
     with:
       projectname: "Konomo Github"
