@@ -13,7 +13,10 @@ on:
         type: string  
       productname:
         required: true
-        type: string          
+        type: string   
+      artifactpath:
+        required: true
+        type: string        
     secrets:
       authtoken:
         required: true
@@ -28,4 +31,4 @@ jobs:
       - uses: actions/download-artifact@v3
       - run: |  
           pip install requests
-          python import.py "${{ inputs.scantype }}" "${{ inputs.scanstatus }}" "./my-artifact/report.json" "${{ inputs.projectname }}" "${{ secrets.authtoken }}" "${{ inputs.productname }}"
+          python import.py "${{ inputs.scantype }}" "${{ inputs.scanstatus }}" "${{ inputs.artifactpath }}" "${{ inputs.projectname }}" "${{ secrets.authtoken }}" "${{ inputs.productname }}"
