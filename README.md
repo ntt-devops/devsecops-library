@@ -53,6 +53,9 @@ To call the Checkov Terraform Scan workflow in your project, just add new job in
     with:
     
       projectdir: << Directory Name >>
+      
+      softfail: << true or false >>
+      
         
 To call the Defectdojo import job workflow in your project, just add new job in your workflow after any of your scan job.  Also your repo should have import.py in root directory.  This will import scan result to defectdojo console 
 
@@ -69,7 +72,7 @@ To call the Defectdojo import job workflow in your project, just add new job in 
       productname: "Konomo"
       artifactpath: "./my-artifact/report.json"
     secrets:
-      authtoken: ${{ secrets.authtoken }}      softfail: << true or false >>
+      authtoken: ${{ secrets.authtoken }}      
       
 
 
