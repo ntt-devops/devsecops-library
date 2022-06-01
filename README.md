@@ -6,7 +6,7 @@ This library shares workflows, secrets and runners which can be reused in all th
 
 Features
 
-1.) Sonarcloud Analysis, Checkov Terraform Scan and Trivy Container Scan workflows are available to reuse. This will avoid duplication and make your workflow easier to maintain
+1.) Sonarcloud Analysis, Checkov Terraform Scan, Trivy Container Scan and Defectdojo import job workflows are available to reuse. This will avoid duplication and make your workflow easier to maintain
 
 User guide
 
@@ -53,8 +53,25 @@ To call the Checkov Terraform Scan workflow in your project, just add new job in
     with:
     
       projectdir: << Directory Name >>
+        
+To call the Defectdojo import job workflow in your project, just add new job in your workflow after any of your scan job.  Also your repo should have import.py in root directory.  This will import scan result to defectdojo console 
+
+  import-scan-defectdojo:
+  
+    uses: ntt-devops/devsecops-library/.github/workflows/defectdojo-import-job.yml@main
+    
+    needs: trivy-scan-workflow
+    
+    with:
+      projectname: "Konomo Github"
+      scanstatus: "True"
+      scantype: "Trivy Scan"
+      productname: "Konomo"
+      artifactpath: "./my-artifact/report.json"
+    secrets:
+      authtoken: ${{ secrets.authtoken }}      softfail: << true or false >>
       
-      softfail: << true or false >>
-      
+
+
 
 Reference : https://docs.github.com/en/actions/using-workflows/sharing-workflows-secrets-and-runners-with-your-organization
